@@ -1,8 +1,7 @@
 <template lang="pug">
 nav.app-nav
   .app-nav-container
-
-    h1.app-nav-logo(:class="{ hide: logoCollapse }")
+    h1.app-nav-logo(:class="{ hide: logoCollapse && !isMenuOpen }")
       img.app-nav-logo-img(:src="require('@/assets/logo.svg')")
       .app-nav-logo-text
         .app-nav-logo-text-content revue and rescss
@@ -25,6 +24,9 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.handleTitleCollapse)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleTitleCollapse)
   },
   methods: {
     handleTitleCollapse (e) {
