@@ -1,0 +1,129 @@
+<template lang="pug">
+transition(name="slide")
+  .app-menu
+    //- .app-menu-deco-left
+    transition(name="slide-deco")
+      .app-menu-deco(v-if="isMenuOpen")
+        .app-menu-deco-text MENU
+    ul.app-menu-list
+      li.app-menu-list-item lorem ipsf
+      li.app-menu-list-item dolor sit ameu
+      li.app-menu-list-item eiusmod tempoc
+      li.app-menu-list-item accusantik
+      //- li.app-menu-list-item dissbleio
+</template>
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      isMenuOpen: state => state.ui.menu.open
+    })
+  }
+}
+</script>
+
+<style lang="scss">
+.app-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eee;
+  z-index: 1;
+
+  &-deco {
+    position: relative;
+    overflow: hidden;
+    width: 61.9vw;
+    height: 100%;
+    background-color: #323232;
+
+    &-text {
+      position: absolute;
+      bottom: 160px;
+      left: -125px;
+      font-size: 120px;
+      font-weight: bold;
+      color: transparent;
+      -webkit-text-stroke: 1px;
+      -webkit-text-stroke-color: #aaa;
+      transform: rotate(90deg);
+      letter-spacing: 24px;
+      line-height: 1;
+    }
+
+    &-left {
+      position: fixed;
+      top: 120px;
+      right: 98px;
+      width: 2px;
+      height: 300px;
+      background-color: #aaa;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    top: 50%;
+    right: 25vw;
+    margin: 0;
+    padding: 40px;
+    font-size: 84px;
+    font-weight: bold;
+    text-align: right;
+    color: #eee;
+    list-style: none;
+    transition: 0.2s;
+    transform: translateY(-50%);
+    letter-spacing: 10px;
+    text-size-adjust: auto;
+    mix-blend-mode: exclusion;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #666;
+    }
+
+    &-item {
+      transition: 0.2s;
+
+      &:hover {
+        color: #eee;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: 1.2s 0.2s;
+  transform: translateX(0%);
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-deco-enter-active {
+  transition: 1s 0.4s;
+}
+
+.slide-deco-leave-active {
+  transition: 0.5s;
+}
+
+.slide-deco-enter {
+  width: 100vw;
+}
+
+.slide-deco-leave-to {
+  width: 0;
+}
+</style>
