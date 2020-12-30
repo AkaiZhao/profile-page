@@ -1,27 +1,53 @@
 <template lang="pug">
 section.home-section(ref="section" v-show="show")
   h2.home-section-title Layout
-  template(v-for="x in [1,2,3,4]")
-    .home-section-container
-      p.home-section-container-text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-      img.home-section-container-image(:src="`https://picsum.photos/id/${Math.floor(Math.random() * 100 *x)}/600/300`")
+  template(v-for="(row, i) in rowData")
+    .home-section-container(:class="{reverse: Boolean(i%2) }")
+      p.home-section-container-text {{row.content}}
+      .home-section-container-image
+        img.home-section-container-image-main(:src="row.imageSrc")
+        img.home-section-container-image-sub(:src="row.subImageSrc")
 </template>
 
 <script>
 export default {
   name: 'Intro',
   data: () => ({
-    show: false
+    timer: null,
+    show: false,
+    rowData: [
+      {
+        imageSrc: 'https://picsum.photos/id/183/800/370',
+        subImageSrc: 'https://picsum.photos/id/13/250/350',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+      },
+      {
+        imageSrc: 'https://picsum.photos/id/193/500/370',
+        subImageSrc: 'https://picsum.photos/id/12/250/350',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+      },
+      {
+        imageSrc: 'https://picsum.photos/id/145/500/370',
+        subImageSrc: 'https://picsum.photos/id/23/250/350',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+      },
+      {
+        imageSrc: 'https://picsum.photos/id/173/500/370',
+        subImageSrc: 'https://picsum.photos/id/125/250/350',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+      }
+    ]
   }),
   mounted () {
-    setTimeout(() => {
+    this.timer = setTimeout(() => {
       this.show = true
+      window.addEventListener('scroll', this.handleWindowScroll)
     }, 4500)
-
-    window.addEventListener('scroll', this.handleWindowScroll)
   },
   beforeDestroy () {
+    clearTimeout(this.timer)
     window.removeEventListener('scroll', this.handleWindowScroll)
+    document.body.style.backgroundColor = ''
   },
   methods: {
     handleWindowScroll (e) {
@@ -78,27 +104,42 @@ export default {
 
   &-container {
     display: flex;
-    padding: 0 60px;
-    padding-bottom: 30px;
+    padding: 120px 0;
     text-align: left;
 
-    &:nth-child(2n) {
+    &.reverse {
       flex-direction: row-reverse;
       text-align: right;
     }
 
     &-text {
       flex: 1;
-      padding: 0 40px;
+      padding: 0 160px;
       font-size: 24px;
 
       /* text-align: justify; */
     }
 
     &-image {
-      flex: 1;
-      display: block;
-      padding: 0 40px;
+      flex: 1.3;
+      position: relative;
+
+      &-main {
+        width: 100%;
+        height: 100%;
+      }
+
+      &-sub {
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+      }
+    }
+
+    .reverse &-image-sub {
+      bottom: -20px;
+      right: -20px;
+      left: initial;
     }
   }
 }

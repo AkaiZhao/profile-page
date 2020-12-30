@@ -6,19 +6,30 @@ transition(name="slide")
       .app-menu-deco(v-if="isMenuOpen")
         .app-menu-deco-text MENU
     ul.app-menu-list
-      li.app-menu-list-item lorem ipsf
-      li.app-menu-list-item dolor sit ameu
+      router-link.app-menu-list-item(tag="li" :to="{ name: 'Home' }") lorem ipsf
+      router-link.app-menu-list-item(tag="li" :to="{ name: 'Work' }") dolor sit AppMenu
       li.app-menu-list-item eiusmod tempoc
       li.app-menu-list-item accusantik
       //- li.app-menu-list-item dissbleio
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
       isMenuOpen: state => state.ui.menu.open
     })
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to)
+      this.toggleMenuOpen(false)
+    }
+  },
+  methods: {
+    ...mapMutations('ui', [
+      'toggleMenuOpen'
+    ])
   }
 }
 </script>
@@ -81,6 +92,7 @@ export default {
     text-size-adjust: auto;
     mix-blend-mode: exclusion;
     text-transform: uppercase;
+    cursor: pointer;
 
     &:hover {
       color: #666;

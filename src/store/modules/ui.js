@@ -7,8 +7,9 @@ const uiStore = {
     }
   },
   mutations: {
-    toggleMenuOpen (state) {
-      state.menu.open = !state.menu.open
+    toggleMenuOpen (state, payload) {
+      if (typeof payload === 'boolean') state.menu.open = payload
+      else state.menu.open = !state.menu.open
     }
   },
   actions: {
