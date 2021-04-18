@@ -39,16 +39,10 @@ export default {
         link: 'https://akaizhao.github.io/react-cover'
       },
       {
-        imageSrc: 'https://picsum.photos/id/145/500/370',
-        subImageSrc: 'https://picsum.photos/id/23/250/350',
-        title: 'To be continued',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
-      },
-      {
-        imageSrc: 'https://picsum.photos/id/173/500/370',
-        subImageSrc: 'https://picsum.photos/id/125/250/350',
-        title: '',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+        imageSrc: require('@/assets/images/tictactoe.png'),
+        title: 'OOXX(tic-tac-toe)',
+        content: 'OOXX小遊戲：)',
+        link: 'https://akaizhao.github.io/tictactoe/'
       }
     ]
   }),
@@ -133,17 +127,55 @@ export default {
       & > a {
         font-size: 24px;
         margin: 12px 0;
+        margin-bottom: 40px;
       }
       & > h3 {
         font-size: 36px;
-        margin: 0;
+        margin: 20px 0;
       }
 
       /* text-align: justify; */
     }
+    $link-color: rgb(163, 212, 224);
     &-link {
+      text-align: center;
+      padding: 16px 32px;
+      display: block;
+      border: 3px solid $link-color;
       text-decoration: none;
-      color: rgb(86, 149, 165);
+      color: $link-color;
+      position: relative;
+      transition: 0.3s;
+      overflow: hidden;
+      &::before,
+      &:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $link-color;
+      }
+      &::before {
+        left: -100%;
+      }
+      &::after {
+        transition: 0.3s;
+        right: -100%;
+      }
+      &:hover {
+        color: #232323;
+        transition: 0.3s 0.3s;
+        &::before {
+          transition: 0.3s;
+          left: 0%;
+        }
+        &::after {
+          transition: 0s 0.3s;
+          right: 0;
+        }
+      }
     }
 
     &-image {
