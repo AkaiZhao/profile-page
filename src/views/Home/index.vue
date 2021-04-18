@@ -13,15 +13,19 @@ export default {
     Landing,
     Intro
   },
-  data: () => ({
-
-  })
+  data: () => ({})
 }
 </script>
 
 <style lang="scss">
-
 .home {
+  padding-top: 120px;
+  min-height: calc(100vh - 120px);
+  background: linear-gradient(
+    110deg,
+    rgb(100, 145, 177) 20%,
+    rgb(83, 230, 103)
+  );
   position: relative;
 }
 </style>

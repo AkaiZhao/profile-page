@@ -1,19 +1,40 @@
 <template lang="pug">
-  main.home-main
-    .home-main-content
-      h1.home-main-content-text 你好，世界！
-      h1.home-main-content-text Hello, World!
-      h1.home-main-content-text Bonjour le monde
-      h1.home-main-content-text Здравствуй, мир!
-      p.home-main-content-text-deco This is only some decoration, make home-mainpge cool.
-    .home-main-content-deco-right I want off work.
-    .home-main-scroll-tip
-      .home-main-scroll-tip-text scroll
-      .home-main-scroll-tip-arrow
+main.home-main
+  .home-main-content
+    h1.home-main-content-text(v-for="text in randTexts", :key="text") {{ text }}
+    p.home-main-content-text-deco This is only some decoration, make home-mainpge cool.
+  .home-main-content-deco-right I want off work.
+  .home-main-scroll-tip
+    .home-main-scroll-tip-text scroll
+    .home-main-scroll-tip-arrow
 </template>
-
+<script>
+export default {
+  data: () => ({
+    texts: [
+      ['THIS IS AKAI STUDIO', '這裡是 AKAI STUDIO。'],
+      ['MY WEB PROFILE', '我的個人網站'],
+      ['HELLO WORLD.', '你好，世界。'],
+      ['WELCOME MY WORLD.', '歡迎，進入我的世界。']
+    ],
+    count: 0,
+    randTexts: []
+  }),
+  created () {
+    this.randTexts = this.randTextLoop()
+    setInterval(() => {
+      this.randTexts = this.randTextLoop()
+    }, 10000)
+  },
+  methods: {
+    randTextLoop () {
+      this.count = (this.count + 1) & 1
+      return this.texts.map(arr => arr[this.count] || arr[0])
+    }
+  }
+}
+</script>
 <style lang="scss">
-
 .home-main {
   position: relative;
   padding: 100px;
@@ -35,29 +56,27 @@
       text-transform: uppercase;
       pointer-events: none;
       transform: translateY(30px);
-
+      $text-color: #efefef;
       &:nth-child(2n-1) {
-        color: #bcbcbc;
+        color: $text-color;
         animation: move1 6s;
       }
 
       &:nth-child(2n) {
-        color: #323232;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #bcbcbc;
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: $text-color;
       }
 
       @for $i from 1 through 4 {
         &:nth-child(#{$i}) {
           @if ($i<4) {
             margin-left: ($i - 1) * 40px;
-          }
-
-          @else {
+          } @else {
             margin-left: (-$i + 3) * 40px;
           }
 
-          animation: move 2.4s $i*0.7s both;
+          animation: move 2.4s $i * 0.7s both;
         }
       }
 
@@ -136,7 +155,7 @@
         width: 100%;
         height: 100%;
         background-color: #fff;
-        content: '';
+        content: "";
         animation: arrow-move 2.5s infinite both linear;
       }
 

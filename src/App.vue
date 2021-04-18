@@ -1,9 +1,9 @@
 <template lang="pug">
-  .app
-    app-menu(v-show="isMenuOpen")
-    app-nav
-    .app-container
-      router-view
+.app
+  app-menu(v-show="isMenuOpen")
+  app-nav
+  .app-container
+    router-view
 </template>
 <script>
 import AppNav from '@/components/Nav'
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&family=Rubik:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&family=Rubik:wght@300;400;700&display=swap");
 
 body {
   margin: 0;
@@ -34,7 +34,7 @@ body {
 
 .app {
   width: 100%;
-  font-family: 'Rubik', 'Noto Sans TC', Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Rubik", "Noto Sans TC", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -43,6 +43,5 @@ body {
 
 .app-container {
   margin: 0 auto;
-  padding-top: 120px;
 }
 </style>

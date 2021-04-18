@@ -4,7 +4,7 @@ nav.app-nav
     h1.app-nav-logo(:class="{ hide: logoCollapse && !isMenuOpen }")
       img.app-nav-logo-img(:src="require('@/assets/logo.svg')")
       .app-nav-logo-text
-        .app-nav-logo-text-content revue and rescss
+        .app-nav-logo-text-content AKAI STUDIO
     menu-button
 </template>
 <script>
@@ -89,5 +89,4 @@ export default {
     }
   }
 }
-
 </style>
