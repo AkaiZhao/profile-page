@@ -17,34 +17,14 @@ section.home-section(ref="section", :class="{ scroll }", v-show="show")
 </template>
 
 <script>
+import { WORKS } from '@/configs/works'
 export default {
   name: 'Intro',
   data: () => ({
     timer: null,
     show: false,
     scroll: false,
-    rowData: [
-      {
-
-        imageSrc: require('@/assets/images/gomoku.png'),
-        title: '五子棋',
-        content: '練習typescript以及Canvas時，開發的小遊戲，規則與小時候玩的五子棋一樣。',
-        link: 'https://akaizhao.github.io/gomoku/'
-      },
-      {
-        imageSrc: require('@/assets/images/react-cover.png'),
-        subImageSrc: require('@/assets/images/react-cover-sub.png'),
-        title: 'react-cover',
-        content: 'React元件，主要功能用來切換loading狀態在畫面上的顯示，有幾個預設的樣式，也能自定義樣式及元件組合客製化的遮罩。',
-        link: 'https://akaizhao.github.io/react-cover'
-      },
-      {
-        imageSrc: require('@/assets/images/tictactoe.png'),
-        title: 'OOXX(tic-tac-toe)',
-        content: 'OOXX小遊戲：)',
-        link: 'https://akaizhao.github.io/tictactoe/'
-      }
-    ]
+    rowData: WORKS
   }),
   mounted () {
     this.timer = setTimeout(() => {

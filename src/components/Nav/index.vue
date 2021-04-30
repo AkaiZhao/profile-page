@@ -43,7 +43,9 @@ export default {
   width: 100vw;
   color: #eee;
   z-index: 1;
-
+  @media (max-width: 414px) {
+    top: 24px;
+  }
   &-container {
     position: relative;
     display: flex;
@@ -52,6 +54,10 @@ export default {
     margin: 0 auto;
     padding: 0 72px;
     width: calc(100% - 144px);
+    @media (max-width: 414px) {
+      padding: 0 12px;
+      width: calc(100% - 24px);
+    }
   }
 
   &-logo {

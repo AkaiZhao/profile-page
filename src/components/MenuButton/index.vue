@@ -1,12 +1,11 @@
 <template lang="pug">
 .app-nav-menu(
-  :class="{active:isMenuOpen}"
-  @click="toggleMenuOpen"
-  @mousemove="handleBorderMove"
+  :class="{ active: isMenuOpen }",
+  @click="toggleMenuOpen",
+  @mousemove="handleBorderMove",
   @mouseleave="handleResetBorderPosition"
 )
   .app-nav-menu-border(ref="borderRef")
-
 </template>
 <script>
 import { mapMutations, mapState } from 'vuex'
@@ -41,7 +40,13 @@ export default {
   height: 80px;
   transition: 0.7s;
   cursor: pointer;
-
+  @media (max-width: 414px) {
+    position: relative;
+    top: initial;
+    right: initial;
+    width: 40px;
+    height: 40px;
+  }
   &-border {
     position: absolute;
     top: 10%;
@@ -53,7 +58,9 @@ export default {
     box-sizing: border-box;
     transition: 0.2s, border 0.5s;
     pointer-events: none;
-
+    @media (max-width: 414px) {
+      display: none;
+    }
     .active & {
       border: 2px solid #777;
     }
@@ -64,7 +71,7 @@ export default {
     position: absolute;
     background-color: #eee;
     transition: 0.8s;
-    content: '';
+    content: "";
   }
 
   &::before {
@@ -104,5 +111,4 @@ export default {
     }
   }
 }
-
 </style>

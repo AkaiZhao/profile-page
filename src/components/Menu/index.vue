@@ -7,7 +7,8 @@ transition(name="slide")
         .app-menu-deco-text MENU
     ul.app-menu-list
       router-link.app-menu-list-item(tag="li", :to="{ name: 'Home' }") HOME 首頁
-      router-link.app-menu-list-item(tag="li", :to="{ name: 'Work' }") WORK 作品(未完成)
+      router-link.app-menu-list-item(tag="li", :to="{ name: 'Work' }") WORK 作品
+      router-link.app-menu-list-item(tag="li", :to="{ name: 'About' }") Comming Soon
       li.app-menu-list-item 其他還沒有那麼多內容
       li.app-menu-list-item 所以這兩行是湊字數的
       //- li.app-menu-list-item dissbleio

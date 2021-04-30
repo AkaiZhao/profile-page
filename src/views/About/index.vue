@@ -2,27 +2,9 @@
 .work
   .work-scroll
     .work-banner(ref="banner", :style="bannerStyles")
-      h1.work-title type banner with&nbsp;
-        span.white english
-        div make this page awesome!
-  .work-cards-outer
-    .work-cards
-      a.work-card(
-        v-for="(card, i) in cards",
-        :key="card.title",
-        :class="[i & 1 ? 'dark' : 'light']",
-        :href="card.link",
-        target="_blank"
-      )
-        .work-card-img(:style="{ backgroundImage: `url(${card.imageSrc})` }")
-        .work-card-main
-          h3.work-card-title {{ card.title }}
-          p.work-card-content {{ card.content }}
-      a.work-card.extra(
-        v-if="cards.length % 4",
-        href="https://github.com/AkaiZhao",
-        target="_blank"
-      )
+      h1.work-title HI, I'm
+        span.white &nbsp; Akai
+        div more and more frontend
 </template>
 <script>
 import { WORKS } from '@/configs/works'

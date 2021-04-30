@@ -39,12 +39,17 @@ export default {
   position: relative;
   padding: 100px;
   padding-bottom: 200px;
-
+  @media (max-width: 414px) {
+    padding: 0px;
+    padding-bottom: 100px;
+  }
   &-content {
     display: inline-block;
     margin: 0 auto;
     padding: 0 80px;
-
+    @media (max-width: 414px) {
+      padding: 0 40px;
+    }
     &-text {
       margin: 5px;
       font-size: 84px;
@@ -57,6 +62,12 @@ export default {
       pointer-events: none;
       transform: translateY(30px);
       $text-color: #efefef;
+
+      @media (max-width: 414px) {
+        font-size: 36px;
+        letter-spacing: 1px;
+      }
+
       &:nth-child(2n-1) {
         color: $text-color;
         animation: move1 6s;
