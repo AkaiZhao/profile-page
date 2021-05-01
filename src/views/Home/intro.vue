@@ -91,8 +91,11 @@ export default {
     padding: 120px 0;
     text-align: left;
     transition: 0.6s;
+    max-width: 100%;
     .scroll & {
       padding: 120px 60px;
+      max-width: 1600px;
+      margin: 0 auto;
     }
 
     &.reverse {
@@ -165,9 +168,13 @@ export default {
       &-main {
         width: 100%;
         height: 100%;
+        border: 1px solid #444;
+        border-radius: 8px;
+        box-shadow: 0px 0px 6px 1px rgba($color: #000, $alpha: 0.4);
       }
 
       &-sub {
+        border-radius: 4px;
         position: absolute;
         bottom: -20px;
         left: -20px;
