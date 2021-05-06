@@ -84,13 +84,13 @@ export default {
   display: block;
   text-align: left;
   color: #323232;
+  background-color: #fff;
   transition: 0.3s;
   &:hover {
     transform: translate(-3px, -3px);
     box-shadow: 0px 0px 7px 3px rgba(#232323, 0.4);
   }
   &.extra {
-    background-color: #fff;
     box-shadow: none;
     background-image: url("~@/assets/github.png");
     background-repeat: no-repeat;
@@ -106,12 +106,6 @@ export default {
     }
   }
 
-  // &.light {
-  // }
-  // &.dark {
-  //   color: #eee;
-  //   background-color: #323232;
-  // }
   &-main {
     padding: 20px 12px;
   }
@@ -121,14 +115,26 @@ export default {
     margin: auto;
     margin-bottom: 12px;
     font-size: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
   &-content {
     font-family: serif;
     font-size: 16px;
     font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   &-img {
+    background-color: #272727;
     width: 100%;
+    box-shadow: 0px 1px 10px -5px #000;
     transition: 0.2s;
     height: 150px;
     background-size: cover;
